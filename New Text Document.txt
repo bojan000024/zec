@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Vezba BMI</title>
+  </head>
+  <style>
+    body {
+      background-color: #2D3250;
+    }
+
+    .container {
+      padding-top: 150px;
+      background-color: #2D3250;
+    }
+  </style>
+  <body>
+    <div class="container my-5">
+      <div class="row my-3">
+        <div class="col-md-6 text-light my-5 xy-5">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="male" required>
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="female" required>
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+          <label for="height">Visina u cm</label>
+          <input type="number" class="form-control my-2" id="height" required placeholder="Unesite vasu visinu">
+          <label for="weight">Tezina u kg</label>
+          <input type="number" class="form-control my-2" id="weight" required placeholder="Unesite vasu tezinu">
+          <button type="submit" class="btn btn-warning bt-md my-3" onclick="redirectMe()">Submit</button>
+          <div id="gender" class="text-danger"></div>
+          <div id="bmiResult" class="text-warning"></div>
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="img/logo.jpg" class="img-fluid" height="800" width="400">
+        </div>
+      </div>
+    </div>
+    <script>
+      function redirectMe() {
+        calculateBMI();
+        if (document.getElementById('male').checked) {
+          window.location.href = 'male.html';
+        } else if (document.getElementById('female').checked) {
+          window.location.href = 'female.html';
+        } else {
+          document.getElementById('gender').innerText = 'Izaberite pol.';
+        }
+      }
+
+      function calculateBMI() {
+        var height = parseFloat(document.getElementById('height').value);
+        var weight = parseFloat(document.getElementById('weight').value);
+        if (!isNaN(height) && !isNaN(weight) && height > 0 && weight > 0) {
+          var bmi = weight / Math.pow(height / 100, 2);
+          sessionStorage.setItem('bmi', bmi.toFixed(2));
+        } else {
+          document.getElementById('bmiResult').innerText = '';
+        }
+      }
+      window.onload = function() {
+        var bmi = parseFloat(sessionStorage.getItem('bmi'));
+        if (!isNaN(bmi)) {
+          document.getElementById('bmiResult').innerText = 'Vas BMI je: ' + bmi.toFixed(2);
+          if (bmi < 18.5) {
+            document.getElementById('bmiMessage').innerText = 'Vas BMI je ispod dozvoljenih granica.';
+          } else if (bmi >= 18.5 && bmi <= 24.9) {
+            document.getElementById('bmiMessage').innerText = 'Vas BMI je unutar dozvoljenih granica. ';
+          } else if (bmi >= 25 && bmi <= 29.9) {
+            document.getElementById('bmiMessage').innerText = 'Vas BMI je iznad dozvoljenih granica.';
+          } else {
+            document.getElementById('bmiMessage').innerText = 'Vas BMI je previsok, posetite lekara.';
+          }
+        } else {
+          document.getElementById('bmiResult').innerText = '';
+        }
+      };
+    </script>
+  </body>
+</html> p--------------
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Vezba BMI</title>
+  </head>
+  <style>
+    body {
+      background-color: #2D3250;
+    }
+
+    .container {
+      padding-top: 150px;
+      background-color: #2D3250;
+    }
+  </style>
+  <body>
+    <div class="container my-5">
+      <div class="row my-3">
+        <div class="col-md-6 text-light my-5 xy-5">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="male" required>
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="female" required>
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+          <label for="height">Visina u cm</label>
+          <input type="number" class="form-control my-2" id="height" required placeholder="Unesite vasu visinu">
+          <label for="weight">Tezina u kg</label>
+          <input type="number" class="form-control my-2" id="weight" required placeholder="Unesite vasu tezinu">
+          <button type="submit" class="btn btn-warning bt-md my-3" onclick="redirectMe()">Submit</button>
+          <div id="gender" class="text-danger"></div>
+          <div id="bmiResult" class="text-warning"></div>
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="img/logo.jpg" class="img-fluid" height="800" width="400">
+        </div>
+      </div>
+    </div>
+    <script>
+      function redirectMe() {
+        calculateBMI();
+        if (document.getElementById('male').checked) {
+          window.location.href = 'male.html';
+        } else if (document.getElementById('female').checked) {
+          window.location.href = 'female.html';
+        } else {
+          document.getElementById('gender').innerText = 'Izaberite pol.';
+        }
+      }
+
+      function calculateBMI() {
+        var height = parseFloat(document.getElementById('height').value);
+        var weight = parseFloat(document.getElementById('weight').value);
+        if (!isNaN(height) && !isNaN(weight) && height > 0 && weight > 0) {
+          var bmi = weight / Math.pow(height / 100, 2);
+          sessionStorage.setItem('bmi', bmi.toFixed(2));
+        } else {
+          document.getElementById('bmiResult').innerText = '';
+        }
+      }
+      window.onload = function() {
+        var bmi = parseFloat(sessionStorage.getItem('bmi'));
+        if (!isNaN(bmi)) {
+          document.getElementById('bmiResult').innerText = 'Vas BMI je: ' + bmi.toFixed(2);
+          if (bmi < 18.5) {
+            document.getElementById('bmiMessage').innerText = 'Vas BMI je ispod dozvoljenih granica.';
+          } else if (bmi >= 18.5 && bmi <= 24.9) {
+            document.getElementById('bmiMessage').innerText = 'Vas BMI je unutar dozvoljenih granica. ';
+          } else if (bmi >= 25 && bmi <= 29.9) {
+            document.getElementById('bmiMessage').innerText = 'Vas BMI je iznad dozvoljenih granica.';
+          } else {
+            document.getElementById('bmiMessage').innerText = 'Vas BMI je previsok, posetite lekara.';
+          }
+        } else {
+          document.getElementById('bmiResult').innerText = '';
+        }
+      };
+    </script>
+  </body>
+</html> --------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      background-color: purple;
+    }
+
+    .custom-container {
+      max-width: 600px;
+      /* Adjust the max-width as per your requirement */
+      margin: 0 auto;
+      /* Centers the container horizontally */
+      background-color: white;
+      padding: 20px;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: green;
+    }
+  </style>
+  <body>
+    <div class="container my-5 custom-container ">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="name">Ime</label>
+          <input type="text" class="form-control my-3" id="name" placeholder="Unesite vase ime">
+        </div>
+        <div class="col-md-6">
+          <label for="lastName">Prezime</label>
+          <input type="text" class="form-control my-3" id="lastName" placeholder="Unesite vase prezime ">
+        </div>
+        <div class="row md-3 my-3">
+          <div class="col-md-12">
+            <label for="option">Izaberite predmet</label>
+            <select class="form-control my-3" id="subject">
+              <option value="E-poslovanje">E-poslovanje</option>
+              <option value="Softversko">Softversko</option>
+              <option value="Matematika">Matematika</option>
+            </select>
+          </div>
+        </div>
+        <div class="row md-3 ">
+          <div class="col-md-12">
+            <label for="comment">Utisci</label>
+            <textarea class="form-control my-3" id="comment" placeholder="Utisci o predmetu"></textarea>
+          </div>
+        </div>
+        <div class="row md-3 my-2">
+          <div class="col-md-4">
+            <button id="button" type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+        <div id="displayData"></div>
+      </div>
+    </div>
+    <script>
+      document.getElementById("button").addEventListener("click", function() {
+        var name = document.getElementById("name").value;
+        var lastName = document.getElementById("lastName").value;
+        var subject = document.getElementById("subject").value;
+        var comment = document.getElementById("comment").value;
+        var displayData = document.getElementById("displayData");
+        displayData.innerHTML = " < p > Ime: " + name + " < p > " +
+        " < p > Prezime: " + lastName + " < p > " +
+        " < p > Predmet: " + subject + " < p > " +
+        " < p > Utisci: " + comment + " < p > ";
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  </body>
+</html>

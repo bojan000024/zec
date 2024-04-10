@@ -1,0 +1,481 @@
+--------
+RESTORAN
+------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restoran - Meni i Rezervacija</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: green;
+      background-size: cover;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .card {
+      margin-bottom: 20px;
+    }
+    .card{
+      background-color: black;
+    }
+    #reservation-form{
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="text-center mb-5">Restoran Bombica</h1>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card text-light">
+        <div class="card-body">
+          <h5 class="card-title">Grčka Bombica</h5>
+          <p class="card-text">Sveža grčka bombica sa feta sirom, maslinama i paradajzom.</p>
+          <p class="card-text">Cena: 350 din</p>
+          
+          <button class="btn btn-primary" onclick="rezervisi('Grčka Bombica', 350)">Poruči</button>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-light">
+        <div class="card-body">
+          <h5 class="card-title">Pileća bombica sa krompirom</h5>
+          <p class="card-text">Pileća bombica sa kuvanim krompirom i povrćem po izboru.</p>
+          <p class="card-text">Cena: 700 din</p>
+          <button class="btn btn-primary" onclick="rezervisi('Pileća bombica sa krompirom', 700)">Poruči</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-light">
+        <div class="card-body">
+          <h5 class="card-title">Krofnica i butkica</h5>
+          <p class="card-text">Pileća krofnica sa kuvanim krompirom i povrćem po izboru.</p>
+          <p class="card-text">Cena: 700 din</p>
+          <button class="btn btn-primary" onclick="rezervisi('Pileća krofnica i butkica', 700)">Poruči</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-light">
+        <div class="card-body">
+          <h5 class="card-title">Krofnica i butkica</h5>
+          <p class="card-text">Pileća krofnica sa kuvanim krompirom i povrćem po izboru.</p>
+          <p class="card-text">Cena: 700 din</p>
+          <button class="btn btn-primary" onclick="rezervisi('Pileća krofnica sa krompirom', 700)">Poruči</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  </div>
+  
+
+  
+
+</div>
+
+<div id="reservation-form" style="display: none;">
+  <div class="container mt-5 text-white">
+    <h2 class="text-center">Rezervacija</h2>
+    <div class="form-group">
+      <label for="brojOsoba">Broj Osoba:</label>
+      <input type="number" class="form-control" id="brojOsoba" required>
+    </div>
+    <div class="form-group">
+      <label for="termin">Termin:</label>
+      <input type="datetime-local" class="form-control" id="termin" required>
+    </div>
+    <div class="form-group">
+      <label for="ime">Vaše Ime:</label>
+      <input type="text" class="form-control" id="ime" required>
+    </div>
+    <div class="form-group">
+      <label for="telefon">Broj Telefona:</label>
+      <input type="tel" class="form-control" id="telefon" required>
+    </div>
+    <button type="submit" class="btn btn-primary" onclick="potvrdiRezervaciju()">Potvrdi Rezervaciju</button>
+  </div>
+</div>
+
+
+<div id="potvrda" style="display: none;">
+  <div class="container mt-5">
+    <h2 class="text-center text-danger">Hvala vam na rezervaciji!</h2>
+    <p class="text-center text-danger">Vaša rezervacija je uspešno primljena.</p>
+    <p class="text-center text-danger">Broj Vaše rezervacije: <span id="brojRezervacije"></span></p>
+  </div>
+</div>
+
+<script>
+  var brojRezervacije = 1000; // 
+
+  function rezervisi(jelo, cena) {
+    
+    document.getElementById('reservation-form').style.display = 'block';
+    document.getElementById('potvrda').style.display = 'none';
+    document.getElementById('jelo').value = jelo;
+    document.getElementById('cena').value = cena;
+  }
+
+  function potvrdiRezervaciju() {
+    var brojOsoba = document.getElementById('brojOsoba').value;
+    var termin = document.getElementById('termin').value;
+    var ime = document.getElementById('ime').value;
+    var telefon = document.getElementById('telefon').value;
+
+    
+    brojRezervacije++;
+    prikaziPotvrdu(brojRezervacije);
+  }
+
+  function prikaziPotvrdu(broj) {
+    document.getElementById('reservation-form').style.display = 'none';
+    document.getElementById('potvrda').style.display = 'block';
+    document.getElementById('brojRezervacije').innerText = broj;
+  }
+</script>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------
+
+BMI CALCULATOR
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Vezba BMI</title>
+</head>
+<style>
+    body{
+        background-color: #2D3250;
+    }
+    .container{
+        padding-top: 150px;
+
+    }
+
+
+</style>
+
+<body>
+    <div class="container my-5">
+        <div class="row my-3">
+            <div class="col-md-6 text-light my-5 xy-5">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="male" required>
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="female" required>
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+                <label for="height">Visina u cm</label>
+                <input type="number" class="form-control my-2" id="height" required placeholder="Unesite vasu visinu">
+
+                <label for="weight">Tezina u kg</label>
+                <input type="number" class="form-control my-2" id="weight" required placeholder="Unesite vasu tezinu">
+
+                <button type="submit" class="btn btn-warning bt-md my-3" onclick="redirectMe()">Submit</button>
+
+                <div id="gender" class="text-danger"></div>
+
+                <div id="bmiResult" class="text-warning"></div>
+
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="img/logo.jpg" class="img-fluid" height="800" width="400">
+            </div>
+        </div>
+    </div>
+    <script>
+        function redirectMe() {
+            calculateBMI();
+            if (document.getElementById('male').checked) {
+                window.location.href = 'male.html';
+            } else if (document.getElementById('female').checked) {
+                window.location.href = 'female.html';
+            } else {
+                document.getElementById('gender').innerText = 'Izaberite pol.';
+            }
+        }
+
+        function calculateBMI() {
+
+            var height = parseFloat(document.getElementById('height').value);
+            var weight = parseFloat(document.getElementById('weight').value);
+
+            if (!isNaN(height) && !isNaN(weight) && height > 0 && weight > 0) {
+                var bmi = weight / Math.pow(height / 100, 2);
+
+
+                sessionStorage.setItem('bmi', bmi.toFixed(2));
+            } else {
+                document.getElementById('bmiResult').innerText = ''; 
+            }
+        }
+        window.onload = function() {
+            var bmi = parseFloat(sessionStorage.getItem('bmi'));
+
+            if (!isNaN(bmi)) {
+                document.getElementById('bmiResult').innerText = 'Vas BMI je: ' + bmi.toFixed(2);
+
+                if (bmi < 18.5) {
+                    document.getElementById('bmiMessage').innerText = 'Vas BMI je ispod dozvoljenih granica.';
+
+                } else if (bmi >= 18.5 && bmi <= 24.9) {
+                    document.getElementById('bmiMessage').innerText = 'Vas BMI je unutar dozvoljenih granica. ';
+
+                } else if (bmi >= 25 && bmi <= 29.9) {
+                    document.getElementById('bmiMessage').innerText = 'Vas BMI je iznad dozvoljenih granica.';
+
+                } else {
+                    document.getElementById('bmiMessage').innerText = 'Vas BMI je previsok, posetite lekara.';
+
+                }
+            } else {
+                document.getElementById('bmiResult').innerText = '';
+            }
+        };
+    </script>
+
+</body>
+</html>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Druga grupa
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<style>
+    body {
+      background-color: darkslateblue;
+  }
+  .custom-container {
+      max-width: 600px; 
+      margin: 0 auto; 
+      background-color: white;
+      padding: 20px;
+  }
+  .btn-primary:hover,
+  .btn-primary:focus {
+  background-color: green;
+}
+.result-container {
+      max-width: 600px; 
+      margin: 0 auto; 
+      background-color: white;
+      padding: 20px;
+
+}
+</style>
+<body>
+
+  <div class="container my-5 custom-container">
+    <form id="myForm">
+      <div class="row">
+          <div class="col-md-6">
+              <label for="name">Ime</label>
+              <input type="text" class="form-control my-3" id="name" placeholder="Unesite vase ime" required>    
+          </div>
+          <div class="col-md-6">
+              <label for="lastName">Prezime</label>
+              <input type="text" class="form-control my-3" id="lastName" placeholder="Unesite vase prezime" required>    
+          </div>
+
+          <div class="row md-3 my-3">
+              <div class="col-md-12">
+              <label for="option">Izaberite predmet</label>
+              <select class="form-control my-3" id="subject" required>
+                  <option value="E-poslovanje">E-poslovanje</option>
+                  <option value="Softversko">Softversko</option>
+                  <option value="Matematika">Matematika</option>
+              </select>
+          </div>
+      </div>
+          <div class="row md-3 ">
+              <div class="col-md-12">
+              <label for="comment">Utisci</label>
+              <textarea class="form-control my-3" id="comment" placeholder="Utisci o predmetu" required></textarea>
+          </div>
+      </div>
+      <div class="row md-3 my-2">
+          <div class="col-md-4">
+              <button id="button" type="submit" class="btn btn-primary">Submit</button>
+          </div>
+      </div>
+    </form>
+
+
+      </div>
+
+
+  </div>
+  <div id="displayData" class="result-container">
+
+
+    </div>
+  </div>
+
+  <script>
+      document.getElementById("myForm").addEventListener("submit", function(event){
+          event.preventDefault(); 
+
+          var name = document.getElementById("name").value;
+          var lastName = document.getElementById("lastName").value;
+          var subject = document.getElementById("subject").value;
+          var comment = document.getElementById("comment").value;
+
+          if (name === "" || lastName === "" || subject === "" || comment === "") {
+
+          } else {
+              var displayData = document.getElementById("displayData");
+              displayData.innerHTML = "<p>Ime: " + name + "<p>" +
+                                      "<p>Prezime: " + lastName + "<p>" +
+                                      "<p>Predmet: " + subject + "<p>" +
+                                      "<p>Utisci: " + comment + "<p>";
+          }
+      });
+  </script>
+
+
+
+
+
+</body>
+</html>
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+MATRICA
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title></title>
+  <style>
+    body {
+      background-color: #343a40; 
+      color: #ffffff; 
+      height: 100vh; 
+      align-items: center;
+      justify-content: center;
+      margin: 0; 
+    }
+    .container {
+      max-width: 400px;
+      padding-top: 100px;
+    }
+    .card {
+      width: 100%; 
+      background-color: #212529; 
+      border: 1px solid #343a40; 
+    }
+    .form-control {
+      background-color: #343a40;
+      color: #ffffff; 
+    }
+    label {
+      color: #ffffff; 
+    }
+    #matrixTable {
+      background-color: #ffffff; 
+    }
+    #matrixSize {
+      margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"></h5>
+      <form id="matrixForm">
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="rows"></label>
+            <input type="number" class="form-control" id="rows" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="columns"></label>
+            <input type="number" class="form-control" id="columns" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+        <div class="mt-4">
+            <table class="table" id="matrixTable">
+
+            </table>
+            <p id="matrixSize" class="text-white"></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+
+  $(document).ready(function () {
+    $("#matrixForm").submit(function (event) {
+      event.preventDefault();
+      var rows = $("#rows").val();
+      var columns = $("#columns").val();
+      generateMatrix(rows, columns);
+    });
+
+    function generateMatrix(rows, columns) {
+      var table = $("#matrixTable");
+      table.empty();
+
+      for (var i = 0; i < rows; i++) {
+        var row = $("<tr>");
+        for (var j = 0; j < columns; j++) {
+          var cell = $("<td>");
+          var number = i * columns + j + 1;
+          cell.text(number);
+          if (number % 3 === 0) {
+            cell.css("font-weight", "bold");
+          }
+          row.append(cell);
+        }
+        table.append(row);
+      }
+      $("#matrixSize").text("Velicina matrice " + rows + "x" + columns);
+    }
+
+  });
+</script>
+
+</body>
+</html>

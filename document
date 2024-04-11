@@ -58,7 +58,7 @@ RESTORAN
     <div class="col-md-6">
       <div class="card text-light">
         <div class="card-body">
-          <h5 class="card-title">Krofnica i butkica</h5>
+          <h5 class="card-title">Krofnica </h5>
           <p class="card-text">Pileća krofnica sa kuvanim krompirom i povrćem po izboru.</p>
           <p class="card-text">Cena: 700 din</p>
           <button class="btn btn-primary" onclick="rezervisi('Pileća krofnica i butkica', 700)">Poruči</button>
@@ -68,7 +68,7 @@ RESTORAN
     <div class="col-md-6">
       <div class="card text-light">
         <div class="card-body">
-          <h5 class="card-title">Krofnica i butkica</h5>
+          <h5 class="card-title">Krofnica i </h5>
           <p class="card-text">Pileća krofnica sa kuvanim krompirom i povrćem po izboru.</p>
           <p class="card-text">Cena: 700 din</p>
           <button class="btn btn-primary" onclick="rezervisi('Pileća krofnica sa krompirom', 700)">Poruči</button>
@@ -547,3 +547,146 @@ MATRICA
 </html>
 
 ------------------------------------------------------------
+HOTEL
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotelska Web Stranica</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+        body {
+            padding-top: 50px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Hotel XYZ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Početna</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#sobe">Sobe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#usluge">Usluge</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#kontakt">Kontakt</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Dobrodošli u Hotel XYZ</h1>
+        <p class="lead">Luksuzni hotel sa predivnim pogledom na more.</p>
+        <hr class="my-4">
+        <p>Rezervišite svoj boravak kod nas i uživajte u nezaboravnom odmoru.</p>
+        <a class="btn btn-primary btn-lg" href="#sobe" role="button">Pogledajte naše sobe</a>
+    </div>
+
+    <h2 id="sobe">Naše Sobe</h2>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card">
+                <img src="img/drg.png" class="card-img-top" alt="Soba 1">
+                <div class="card-body">
+                    <h5 class="card-title">Standardna Soba</h5>
+                    <p class="card-text">Udobna soba sa pogledom na more.</p>
+                    <button class="btn btn-primary" onclick="rezervisiSobu(1)">Rezerviši</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <img src="img/prv.png" class="card-img-top" alt="Soba 2">
+                <div class="card-body">
+                    <h5 class="card-title">Soba sa balkonom</h5>
+                    <p class="card-text">Prostrana soba sa privatnim balkonom.</p>
+                    <button class="btn btn-primary" onclick="rezervisiSobu(2)">Rezerviši</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <img src="img/drg.png" class="card-img-top" alt="Soba 3">
+                <div class="card-body">
+                    <h5 class="card-title">Standardna Soba</h5>
+                    <p class="card-text">Udobna soba sa pogledom na more.</p>
+                    <button class="btn btn-primary" onclick="rezervisiSobu(3)">Rezerviši</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="usluge">
+        <h2>Naše Usluge</h2>
+        <p>Pružamo razne dodatne usluge za naše goste, uključujući restoran, bazen, spa centar i još mnogo toga.</p>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="img/trc.png" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+                <img src="img/trc.png" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+                <img src="img/trc.png" class="img-fluid">
+            </div>
+        </div>
+        
+    </section>
+
+    <h2 id="kontakt">Kontakt</h2>
+    <p>Za rezervacije ili dodatne informacije kontaktirajte nas na:</p>
+    <ul>
+        <li>Adresa: Ulica xyz, Kragujevac</li>
+        <li>Telefon: +123456789</li>
+        <li>Email: info@hotelxyz.com</li>
+    </ul>
+</div>
+
+<script>
+    let rezervacije = {};
+
+    function rezervisiSobu(id) {
+        let soba = {
+            id: id,
+            datum: new Date().toLocaleDateString()
+        };
+
+        if (rezervacije[id]) {
+            alert('Soba je već rezervisana za ' + rezervacije[id].datum + '.');
+        } else {
+            rezervacije[id] = soba;
+            alert('Soba je uspešno rezervisana za ' + soba.datum + '.');
+        }
+    }
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
